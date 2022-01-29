@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4222892788067213627}
   - component: {fileID: 4222892788067213604}
+  - component: {fileID: -925408775600885127}
   - component: {fileID: 4222892788067213625}
   - component: {fileID: 4222892788067213626}
   m_Layer: 0
@@ -132,7 +133,24 @@ MonoBehaviour:
   turnSpeedX: 50
   turnSpeedY: 50
   moveSpeed: 2
+--- !u!114 &-925408775600885127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4222892788067213605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5576d7a7616694abf5fd307a33dfa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   jumpForce: 275
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  groundCheckRayOrigin: {x: 0, y: 0.05, z: 0}
+  groundCheckDistance: 0.3
 --- !u!54 &4222892788067213625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,4 +180,4 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}

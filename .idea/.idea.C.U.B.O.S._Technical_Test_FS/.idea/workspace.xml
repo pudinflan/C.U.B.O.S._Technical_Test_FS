@@ -7,6 +7,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerJump.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="24NsMb8wopQsKVQcraWaXhxyANr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -51,7 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1643482336162</updated>
       <workItem from="1643482338208" duration="205000" />
-      <workItem from="1643482577009" duration="7136000" />
+      <workItem from="1643482577009" duration="13093000" />
     </task>
     <servers />
   </component>

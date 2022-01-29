@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class FirstPersonMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement and Rotation")]
     [SerializeField] private float turnSpeedX = 50f;
     [SerializeField] private float turnSpeedY = 50f;
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float jumpForce = 275f;
-
+    
     private Rigidbody rb;
     private Transform cameraTransform;
 
     private float mouseX;
     private float mouseY;
-    private bool grounded;
 
     private void Awake()
     {
@@ -31,7 +30,6 @@ public class FirstPersonMovement : MonoBehaviour
     {
         Rotation();
         Movement();
-        Jumping();
     }
 
     private void Movement()
@@ -51,13 +49,5 @@ public class FirstPersonMovement : MonoBehaviour
         //rotate player on the Y Axis
         transform.Rotate(0, mouseX * Time.fixedDeltaTime, 0);
         mouseX = 0;
-    }
-    
-    private void Jumping()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(Vector3.up * jumpForce);
-        }
     }
 }
