@@ -178,12 +178,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5576d7a7616694abf5fd307a33dfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 275
+  jumpForce: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 768
   groundCheckRayOrigin: {x: 0, y: 0.05, z: 0}
-  groundCheckDistance: 0.3
+  groundCheckDistance: 0.01
+  animator: {fileID: 1254830369854144675}
 --- !u!114 &-7823772364728844024
 MonoBehaviour:
   m_ObjectHideFlags: 0
