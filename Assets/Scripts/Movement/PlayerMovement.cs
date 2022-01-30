@@ -9,6 +9,7 @@ namespace Movement
         [SerializeField] private float turnSpeedX = 50f;
         [SerializeField] private float turnSpeedY = 50f;
         [SerializeField] private float moveSpeed = 2f;
+        [SerializeField] private Animator animator;
     
         private Rigidbody rb;
         private Transform cameraTransform;
@@ -36,10 +37,16 @@ namespace Movement
 
         private void Movement()
         {
-            var velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            float hor = Input.GetAxis("Horizontal");
+            float vert = Input.GetAxis("Vertical");
+            
+            var velocity = new Vector3(hor, 0, vert);
             velocity *= moveSpeed * Time.fixedDeltaTime;
             Vector3 movementOffset = transform.rotation * velocity;
             rb.MovePosition(transform.position + movementOffset);
+            
+            animator.SetFloat("Horizontal", hor, 0.15f,Time.fixedDeltaTime);
+            animator.SetFloat("Vertical", vert, 0.15f,Time.fixedDeltaTime);
         }
 
         private void Rotation()
