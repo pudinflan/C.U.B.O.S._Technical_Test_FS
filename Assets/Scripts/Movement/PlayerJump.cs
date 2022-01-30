@@ -5,8 +5,6 @@ namespace Movement
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerJump : MonoBehaviour
     {
-
-    
         [Header("Values")] 
         [SerializeField] private float jumpForce = 275f;
 
