@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Animation/HandsAnimationControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interaction/IInteractable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interaction/PlayerInteraction.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -57,7 +58,8 @@
       <workItem from="1643482338208" duration="205000" />
       <workItem from="1643482577009" duration="13093000" />
       <workItem from="1643555620423" duration="17201000" />
-      <workItem from="1643631393164" duration="1844000" />
+      <workItem from="1643631393164" duration="13999000" />
+      <workItem from="1643649829955" duration="10619000" />
     </task>
     <servers />
   </component>

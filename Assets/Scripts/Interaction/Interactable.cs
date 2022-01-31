@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Interaction
 {
     public class Interactable : MonoBehaviour, IInteractable
     {
+      
+        
         public virtual bool CanInteract()
         {
             return true;
@@ -13,7 +16,7 @@ namespace Interaction
         {
             if (!CanInteract())
                 return;
-            
+
             Debug.Log($"Interacting LEFT with: {gameObject.name}");
             ExecuteActionLeft();
         }
@@ -22,6 +25,7 @@ namespace Interaction
         {
             if (!CanInteract())
                 return;
+            
             
             Debug.Log($"Interacting RIGHT with: {gameObject.name}");
             ExecuteActionRight();

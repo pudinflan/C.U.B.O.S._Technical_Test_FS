@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Interaction
 {
@@ -7,11 +8,16 @@ namespace Interaction
         private const float InteractionRange = 200f;
 
         [SerializeField] private LayerMask interactableLayer;
-    
+
         private Transform cameraTransform;
-    
+        private IInteractable lastInteractable;
+
+        public static event Action<IInteractable> OnInteractableFound;
+        public static event Action<IInteractable> OnInteractLeft;
+        public static event Action<IInteractable> OnInteractRight;
+
         public IInteractable CurrentInteractable { get; private set; }
-    
+
         private void Awake() => cameraTransform = Camera.main.transform;
 
         private void Update()
@@ -32,11 +38,14 @@ namespace Interaction
                 //TODO: remove this getComponent later (can be expensive)
                 //If Interactable found set it
                 CurrentInteractable = raycastHit.collider.GetComponent<IInteractable>();
-            
+
+                if (CurrentInteractable == lastInteractable)
+                    return;
+
                 if (CurrentInteractable != null)
                 {
-                    //TODO: Maybe delete later
-                    //TODO: Do Interactable Found Stuff like communicating with the Gloves to turn The color dependent on the Cube interactalble type
+                    lastInteractable = CurrentInteractable;
+                    OnInteractableFound?.Invoke((Interactable)CurrentInteractable);
                     Debug.Log($"Interactable in range: {CurrentInteractable}");
                 }
                 else
@@ -52,17 +61,31 @@ namespace Interaction
 
         private void ClearInteractable()
         {
+            if (CurrentInteractable != null)
+            {
+                //If we just left an Interaction range then we Notify for Interaction Lost which is the Same as Found Event with a null Interactable
+                OnInteractableFound?.Invoke(null);
+            }
+          
+
             //TODO: Do Interactable Clear Stuff Communicate with gloves to Stop the Interaction animation
+            lastInteractable = null;
             CurrentInteractable = null;
         }
 
         private void CheckForInteraction()
         {
             //TODO: Move this to an input System
-            if (Input.GetMouseButtonDown(0) && CurrentInteractable != null) 
-                CurrentInteractable.InteractLeft();
-            else if (Input.GetMouseButtonDown(1) && CurrentInteractable != null)
-                CurrentInteractable.InteractRight();
+            if (Input.GetMouseButtonDown(0))
+            {
+                CurrentInteractable?.InteractLeft();
+                OnInteractLeft?.Invoke(CurrentInteractable);
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                CurrentInteractable?.InteractRight();
+                OnInteractRight?.Invoke(CurrentInteractable);
+            }
         }
     }
 }
