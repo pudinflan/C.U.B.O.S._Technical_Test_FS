@@ -21,6 +21,10 @@ namespace Movement
         {
             rb = GetComponent<Rigidbody>();
             cameraTransform = Camera.main.transform;
+            
+            //DEBUG DEBUG DEBUG
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Update()
