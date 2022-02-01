@@ -10,22 +10,26 @@ public class HandsInteractionIKControl : MonoBehaviour
     private const float IKRotationWeight = .15f;
     
     [Header("Setup")] 
-    [SerializeField] private Transform leftHandTransform;
-    [SerializeField] private Transform rightHandTransform;
+    [SerializeField] private Transform leftHandIkTarget;
+    [SerializeField] private Transform rightHandIkTarget;
 
-    [Header("Values")] 
+    [Header("Values")]
+    [Tooltip("The speed of the hands raising animation")]
     [SerializeField] private float raiseHandsAnimationSpeed = 1f;
+    [Tooltip("The speed of the hands lowering animation")]
     [SerializeField] private float lowerHandsAnimationSpeed = .6f;
+    [Tooltip("How long the hands will linger on Interaction pose before lowering")]
     [SerializeField] private float handAnimationStayTimer = 4f;
 
     private Animator animator;
     private Transform cameraTransform;
 
+    private bool raiseHands;
+
     private float currentIKPositionWeight = 0;
     private float currentIKRotationWeight = 0;
     private float currentHandAnimationStayTimer = 0;
 
-    public bool RaiseHands { get; set; }
 
     private void Awake()
     {
@@ -35,7 +39,7 @@ public class HandsInteractionIKControl : MonoBehaviour
 
     private void Update()
     {
-        if (RaiseHands)
+        if (raiseHands)
         {
             //increases the Ik weights if we are raising hands
             currentIKPositionWeight = Mathf.Clamp(currentIKPositionWeight += Time.deltaTime * raiseHandsAnimationSpeed, 0, IKPositionWeight);
@@ -74,14 +78,21 @@ public class HandsInteractionIKControl : MonoBehaviour
             // Set the right hand target position and rotation
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, currentIKPositionWeight);
             animator.SetIKRotationWeight(AvatarIKGoal.RightHand, currentIKRotationWeight);
-            animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandTransform.position);
-            animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandTransform.rotation);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandIkTarget.position);
+            animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandIkTarget.rotation);
 
             // Set the left hand target position and rotation
             animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, currentIKPositionWeight);
             animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, currentIKRotationWeight);
-            animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandTransform.position);
-            animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandTransform.rotation);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandIkTarget.position);
+            animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandIkTarget.rotation);
         }
     }
+    
+    /// <summary>
+    /// Tells the IKController Raise / Lower Hands for interaction (True: raise; False: lower)
+    /// Then processes the raising/lowering on this class Update
+    /// </summary>
+    /// <param name="raise"></param>
+    public void RaiseHands(bool raise) => raiseHands = raise;
 }

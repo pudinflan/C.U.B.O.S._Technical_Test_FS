@@ -31,18 +31,16 @@ public class HandsAnimationControl : MonoBehaviour
     private void PlayerInteractionOnInteractLeft(IInteractable interactable)
     {
         animator.SetTrigger("InteractLeft");
-     
     }
 
     private void PlayerInteractionOnInteractRight(IInteractable interactable)
     {
         animator.SetTrigger("InteractRight");
-      
     }
 
     private void PlayerInteractionOnInteractableFound(IInteractable interactable)
     {
+        handsIKControl.RaiseHands((Interactable) interactable);
         Debug.Log($"Interactable Found: {interactable}");
-        handsIKControl.RaiseHands = (Interactable) interactable ;
     }
 }
