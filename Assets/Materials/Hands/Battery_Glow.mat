@@ -25,7 +25,7 @@ Material:
     type: 3}
   m_ShaderKeywords: _EMISSION _NORMALMAP
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -46,6 +46,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_C4DBAF37: 20
+    - Vector1_C4DBAF37: 10
     m_Colors:
-    - Color_907CB98E: {r: 1.4980392, g: 0, b: 0.04311926, a: 1}
+    - Color_907CB98E: {r: 5.5336905, g: 5.5336905, b: 5.5336905, a: 1}

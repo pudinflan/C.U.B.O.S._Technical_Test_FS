@@ -5,7 +5,9 @@ namespace Interaction
 {
     public class Interactable : MonoBehaviour, IInteractable
     {
-      
+        //TODO: REMOVE THIS FROM HERE, USE SCRIPTABLE OBJECTS
+        [ColorUsage(true, true)]
+        public Color glowColor = Color.cyan;
         
         public virtual bool CanInteract()
         {
