@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4516711133749475740}
   - component: {fileID: 4516711133749475743}
   - component: {fileID: 4516711133749475742}
-  m_Layer: 0
-  m_Name: SecondRoom
+  m_Layer: 8
+  m_Name: Room_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11740,6 +11740,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doorway
       objectReference: {fileID: 0}
+    - target: {fileID: 7223919743367722687, guid: 8a83c795234094742be2eee8b0ebf575,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7223919743367722676, guid: 8a83c795234094742be2eee8b0ebf575,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11795,20 +11800,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7223919743367722675, guid: 8a83c795234094742be2eee8b0ebf575,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7223919743367722674, guid: 8a83c795234094742be2eee8b0ebf575,
         type: 3}
       propertyPath: m_SelectedEditorRenderState
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7223919743367722672, guid: 8a83c795234094742be2eee8b0ebf575,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a83c795234094742be2eee8b0ebf575, type: 3}

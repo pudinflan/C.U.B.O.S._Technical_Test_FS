@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1578967931945689782}
   - component: {fileID: 1578967931945689781}
   - component: {fileID: 1578967931945689780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Room_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3446,6 +3446,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room4_PowerUp_Mechanism
       objectReference: {fileID: 0}
+    - target: {fileID: 3289249270052866260, guid: 4ac4e523003da014f96cf9c7834335e9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8954668365805671366, guid: 4ac4e523003da014f96cf9c7834335e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3501,25 +3506,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4112899781847536800, guid: 4ac4e523003da014f96cf9c7834335e9,
+    - target: {fileID: 4112899781847536812, guid: 4ac4e523003da014f96cf9c7834335e9,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 4112899781847536803, guid: 4ac4e523003da014f96cf9c7834335e9,
+    - target: {fileID: 4112899781232016504, guid: 4ac4e523003da014f96cf9c7834335e9,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112899781232016508, guid: 4ac4e523003da014f96cf9c7834335e9,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4112899781232016511, guid: 4ac4e523003da014f96cf9c7834335e9,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ac4e523003da014f96cf9c7834335e9, type: 3}

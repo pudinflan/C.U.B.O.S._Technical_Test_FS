@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6626276715225218627}
   - component: {fileID: 6626276715225218624}
   - component: {fileID: 6626276715225218625}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Room_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4931,6 +4931,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doorway
       objectReference: {fileID: 0}
+    - target: {fileID: 7223919743367722687, guid: 8a83c795234094742be2eee8b0ebf575,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7223919743367722676, guid: 8a83c795234094742be2eee8b0ebf575,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5011,6 +5016,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door_Vertical_5x7
       objectReference: {fileID: 0}
+    - target: {fileID: 4648227701099487915, guid: 4374c7306ae406a4caa57ffacf70c828,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4648227701099487910, guid: 4374c7306ae406a4caa57ffacf70c828,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5065,16 +5075,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4648227701099487911, guid: 4374c7306ae406a4caa57ffacf70c828,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4648227701099487914, guid: 4374c7306ae406a4caa57ffacf70c828,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4374c7306ae406a4caa57ffacf70c828, type: 3}
