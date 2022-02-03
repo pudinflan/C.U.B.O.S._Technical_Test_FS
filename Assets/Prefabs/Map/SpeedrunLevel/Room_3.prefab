@@ -5043,7 +5043,7 @@ PrefabInstance:
     - target: {fileID: 4648227701099487915, guid: 4374c7306ae406a4caa57ffacf70c828,
         type: 3}
       propertyPath: m_Name
-      value: Wall_Door_Vertical_5x7
+      value: Room3_PowerUp_Mechanism
       objectReference: {fileID: 0}
     - target: {fileID: 4648227701099487915, guid: 4374c7306ae406a4caa57ffacf70c828,
         type: 3}
