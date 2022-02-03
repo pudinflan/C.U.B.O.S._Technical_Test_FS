@@ -15,8 +15,9 @@ namespace Interactables.Cubes
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            HandleCubePosition();
         }
-
+        
         public override void InteractLeft()
         {
             base.InteractLeft();
@@ -28,6 +29,8 @@ namespace Interactables.Cubes
             base.InteractRight();
             LowerCube();
         }
+        
+        private void HandleCubePosition() => animator.SetBool(Raised, raised);
 
         private void RaiseCube()
         {
@@ -35,7 +38,7 @@ namespace Interactables.Cubes
                 return;
             raised = true;
             
-            animator.SetBool(Raised, raised);
+            HandleCubePosition();
         }
 
         private void LowerCube()
@@ -44,7 +47,7 @@ namespace Interactables.Cubes
                 return;
             raised = false;
             
-            animator.SetBool(Raised, raised);
+            HandleCubePosition();
         }
         
         private void Bounce(Collider other)
@@ -53,7 +56,7 @@ namespace Interactables.Cubes
             RaiseCube();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Player"))
             {
