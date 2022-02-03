@@ -1,46 +1,49 @@
-﻿using System;
-using Interaction;
+﻿using Interactables;
+using Player;
 using UnityEngine;
 
-[RequireComponent(typeof(HandsInteractionIKControl))]
-public class HandsAnimationControl : MonoBehaviour
+namespace Animation
 {
-    private Animator animator;
-    private HandsInteractionIKControl handsIKControl;
-
-    private void Awake()
+    [RequireComponent(typeof(HandsInteractionIKControl))]
+    public class HandsAnimationControl : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-        handsIKControl = GetComponent<HandsInteractionIKControl>();
-    }
+        private Animator animator;
+        private HandsInteractionIKControl handsIKControl;
 
-    private void OnEnable()
-    {
-        PlayerInteraction.OnInteractableFound += PlayerInteractionOnInteractableFound;
-        PlayerInteraction.OnInteractLeft += PlayerInteractionOnInteractLeft;
-        PlayerInteraction.OnInteractRight += PlayerInteractionOnInteractRight;
-    }
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+            handsIKControl = GetComponent<HandsInteractionIKControl>();
+        }
 
-    private void OnDisable()
-    {
-        PlayerInteraction.OnInteractableFound -= PlayerInteractionOnInteractableFound;
-        PlayerInteraction.OnInteractLeft -= PlayerInteractionOnInteractLeft;
-        PlayerInteraction.OnInteractRight -= PlayerInteractionOnInteractRight;
-    }
+        private void OnEnable()
+        {
+            PlayerInteraction.OnInteractableFound += PlayerInteractionOnInteractableFound;
+            PlayerInteraction.OnInteractLeft += PlayerInteractionOnInteractLeft;
+            PlayerInteraction.OnInteractRight += PlayerInteractionOnInteractRight;
+        }
 
-    private void PlayerInteractionOnInteractLeft(IInteractable interactable)
-    {
-        animator.SetTrigger("InteractLeft");
-    }
+        private void OnDisable()
+        {
+            PlayerInteraction.OnInteractableFound -= PlayerInteractionOnInteractableFound;
+            PlayerInteraction.OnInteractLeft -= PlayerInteractionOnInteractLeft;
+            PlayerInteraction.OnInteractRight -= PlayerInteractionOnInteractRight;
+        }
 
-    private void PlayerInteractionOnInteractRight(IInteractable interactable)
-    {
-        animator.SetTrigger("InteractRight");
-    }
+        private void PlayerInteractionOnInteractLeft(IInteractable interactable)
+        {
+            animator.SetTrigger("InteractLeft");
+        }
 
-    private void PlayerInteractionOnInteractableFound(IInteractable interactable)
-    {
-        handsIKControl.RaiseHands((Interactable) interactable);
-        Debug.Log($"Interactable Found: {interactable}");
+        private void PlayerInteractionOnInteractRight(IInteractable interactable)
+        {
+            animator.SetTrigger("InteractRight");
+        }
+
+        private void PlayerInteractionOnInteractableFound(IInteractable interactable)
+        {
+            handsIKControl.RaiseHands((Interactable) interactable);
+            Debug.Log($"Interactable Found: {interactable}");
+        }
     }
 }

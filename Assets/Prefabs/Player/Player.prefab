@@ -286,9 +286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76adda081d305ff47b4249c1c94b3741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: {fileID: 11400000, guid: b8e3208f4b6114244b30d9b9e1fa4886, type: 2}
   turnSpeedX: 50
   turnSpeedY: 50
-  moveSpeed: 2
   animator: {fileID: 1254830369854144675}
 --- !u!114 &-925408775600885127
 MonoBehaviour:
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5576d7a7616694abf5fd307a33dfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
+  jumpForce: {fileID: 11400000, guid: 8a973215c88997d47a6b938a5ea8b831, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 768

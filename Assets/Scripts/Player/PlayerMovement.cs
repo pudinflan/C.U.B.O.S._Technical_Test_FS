@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+﻿using Architecture.Variables;
+using UnityEngine;
 
-namespace Movement
+namespace Player
 {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
-        [Header("Movement and Rotation")]
+        [Header("Variables")]
+        [SerializeField] private FloatVariable moveSpeed;
+        
+        [Header("Rotation")]
         [SerializeField] private float turnSpeedX = 50f;
         [SerializeField] private float turnSpeedY = 50f;
-        [SerializeField] private float moveSpeed = 2f;
         [SerializeField] private Animator animator;
     
         private Rigidbody rb;
@@ -21,7 +24,7 @@ namespace Movement
         {
             rb = GetComponent<Rigidbody>();
             cameraTransform = Camera.main.transform;
-            
+
             //DEBUG DEBUG DEBUG
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -45,7 +48,7 @@ namespace Movement
             float vert = Input.GetAxis("Vertical");
             
             var velocity = new Vector3(hor, 0, vert);
-            velocity *= moveSpeed * Time.fixedDeltaTime;
+            velocity *= moveSpeed.Value * Time.fixedDeltaTime;
             Vector3 movementOffset = transform.rotation * velocity;
             rb.MovePosition(transform.position + movementOffset);
             

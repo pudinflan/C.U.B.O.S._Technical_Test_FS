@@ -1,4 +1,4 @@
-namespace Interaction
+namespace Interactables.Cubes
 {
     public class BlueCube : Interactable
     {

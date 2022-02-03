@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿using Architecture.Variables;
+using UnityEngine;
 
-namespace Movement
+namespace Player
 {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerJump : MonoBehaviour
     {
-        [Header("Values")] 
-        [SerializeField] private float jumpForce = 5f;
-
+        [Header("Variables")]
+        [SerializeField] private FloatVariable jumpForce;
+        
         [Header("Setup")] 
         [SerializeField] private LayerMask groundLayer;
     
@@ -17,10 +18,10 @@ namespace Movement
         [SerializeField] private float groundCheckDistance = 0.01f;
 
         [SerializeField] private Animator animator;
-
+        
         private Rigidbody rb;
         private float capsuleRadius;
-        
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -37,7 +38,7 @@ namespace Movement
 
         private void Jump()
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce.Value, ForceMode.Impulse);
         }
 
         private bool IsGrounded()

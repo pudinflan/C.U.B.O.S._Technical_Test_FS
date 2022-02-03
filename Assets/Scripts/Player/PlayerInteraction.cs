@@ -1,7 +1,8 @@
 ﻿using System;
+using Interactables;
 using UnityEngine;
 
-namespace Interaction
+namespace Player
 {
     public class PlayerInteraction : MonoBehaviour
     {
