@@ -106,6 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 0, g: 1, b: 1, a: 1}
-  boostedValue: 7
+  boostedValue: 8
   boostDuration: 3
   variableToModify: {fileID: 11400000, guid: 8a973215c88997d47a6b938a5ea8b831, type: 2}
