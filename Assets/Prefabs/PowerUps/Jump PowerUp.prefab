@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowColor: {r: 0, g: 1, b: 1, a: 1}
-  boostVariable: {fileID: 11400000, guid: 4ade7582cf1498940aca17afca3c146c, type: 2}
-  durationVariable: {fileID: 11400000, guid: 1fc46b4157ae37a4382590b4c7076090, type: 2}
+  boostedValue: 7
+  boostDuration: 3
   variableToModify: {fileID: 11400000, guid: 8a973215c88997d47a6b938a5ea8b831, type: 2}

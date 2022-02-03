@@ -28,10 +28,10 @@ namespace Player.HandMechanism
             }
         
         
-            if (interactable is RedCube redCube)
+            if (interactable is Interactable interactableObject)
             {
                 Debug.Log("CHanging color to red");
-                handsColorControl.SetGlowColor(redCube.glowColor);
+                handsColorControl.SetGlowColor(interactableObject.glowColor);
             }
         }
 

@@ -6,11 +6,12 @@ namespace Interactables.PowerUps
 {
     public class TimedPowerUp : Interactable
     {
-        [Header("Values")] [SerializeField] private FloatVariable boostVariable;
+        [Header("Values")] 
+        [SerializeField] private float boostedValue;
+        [SerializeField] private float boostDuration;
 
-        [SerializeField] private FloatVariable durationVariable;
-
-        [Header("Variables")] [SerializeField] private FloatVariable variableToModify;
+        [Header("Variables")] 
+        [SerializeField] private FloatVariable variableToModify;
 
         private float variableDefaultValue;
 
@@ -19,7 +20,7 @@ namespace Interactables.PowerUps
             base.InteractLeft();
             
             CanInteract = false;
-            ModifyDuringDuration(boostVariable.Value, durationVariable.Value);
+            ModifyDuringDuration(boostDuration);
         }
 
         public override void InteractRight()
@@ -27,17 +28,17 @@ namespace Interactables.PowerUps
             base.InteractRight();
             
             CanInteract = false;
-            ModifyDuringDuration(boostVariable.Value, durationVariable.Value);
+            ModifyDuringDuration(boostDuration);
         }
 
-        protected virtual async void ModifyDuringDuration(float value, float duration)
+        protected virtual async void ModifyDuringDuration(float duration)
         {
             Used();
 
             //cache Variable To modify Base Value
             variableDefaultValue = variableToModify.Value;
             //modify Variable
-            variableToModify.Value = boostVariable.Value;
+            variableToModify.Value = boostedValue;
 
             var end = Time.time + duration;
             while (Time.time < end)

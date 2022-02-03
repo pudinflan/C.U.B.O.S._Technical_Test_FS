@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Architecture.Variables
 {
   public class Variable<T> : ScriptableObject
   {
-    public T Value;
+    [SerializeField] private T defaultValue;
+    [NonSerialized] public T Value;
+    
+    private void OnValidate() => Value = defaultValue;
   }
 }
