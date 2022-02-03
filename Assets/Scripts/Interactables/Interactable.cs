@@ -7,15 +7,17 @@ namespace Interactables
         //TODO: REMOVE THIS FROM HERE, USE SCRIPTABLE OBJECTS
         [ColorUsage(true, true)]
         public Color glowColor = Color.cyan;
-        
-        public virtual bool CanInteract()
+
+        protected bool CanInteract { get; set; } = true;
+
+        public virtual bool CanBeInteracted()
         {
-            return true;
+            return CanInteract;
         }
 
         public virtual void InteractLeft()
         {
-            if (!CanInteract())
+            if (!CanBeInteracted())
                 return;
 
             Debug.Log($"Interacting LEFT with: {gameObject.name}");
@@ -24,7 +26,7 @@ namespace Interactables
 
         public virtual void InteractRight()
         {
-            if (!CanInteract())
+            if (!CanBeInteracted())
                 return;
             
             

@@ -2,7 +2,7 @@
 {
    public interface IInteractable
    {
-      bool CanInteract();
+      bool CanBeInteracted();
       void InteractLeft();
       void InteractRight();
       void ExecuteActionLeft();

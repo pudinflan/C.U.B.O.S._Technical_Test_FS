@@ -1,6 +1,6 @@
 ﻿namespace Interactables.PowerUps
 {
-    public class SpeedPowerUp : TimedPowerUp
+    public class JumpPowerUp : TimedPowerUp
     {
     }
 }
