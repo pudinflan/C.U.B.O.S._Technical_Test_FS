@@ -14,16 +14,18 @@ namespace Interactables.PowerUps
 
         private float variableDefaultValue;
 
-        public override void ExecuteActionLeft()
+        public override void InteractLeft()
         {
-            base.ExecuteActionLeft();
+            base.InteractLeft();
+            
             CanInteract = false;
             ModifyDuringDuration(boostVariable.Value, durationVariable.Value);
         }
 
-        public override void ExecuteActionRight()
+        public override void InteractRight()
         {
-            base.ExecuteActionRight();
+            base.InteractRight();
+            
             CanInteract = false;
             ModifyDuringDuration(boostVariable.Value, durationVariable.Value);
         }
