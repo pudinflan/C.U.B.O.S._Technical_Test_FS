@@ -4991,11 +4991,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7223919743367722674, guid: 8a83c795234094742be2eee8b0ebf575,
+    - target: {fileID: 1937384255367096862, guid: 8a83c795234094742be2eee8b0ebf575,
         type: 3}
-      propertyPath: m_SelectedEditorRenderState
-      value: 2
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 831ef65cef879ae40b08b55c16d9e92d,
+        type: 2}
+    - target: {fileID: 7221616603828181226, guid: 8a83c795234094742be2eee8b0ebf575,
+        type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 171cb347730457541b970e00e8d3a2e5,
+        type: 2}
+    - target: {fileID: 5131940196048086709, guid: 8a83c795234094742be2eee8b0ebf575,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 696508461195445608, guid: 8a83c795234094742be2eee8b0ebf575,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 770245700731576773, guid: 8a83c795234094742be2eee8b0ebf575,
+        type: 3}
+      propertyPath: triggerEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 831ef65cef879ae40b08b55c16d9e92d,
+        type: 2}
+    - target: {fileID: 7190959423845591880, guid: 8a83c795234094742be2eee8b0ebf575,
+        type: 3}
+      propertyPath: triggerEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 171cb347730457541b970e00e8d3a2e5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a83c795234094742be2eee8b0ebf575, type: 3}
 --- !u!4 &7280934503448528108 stripped

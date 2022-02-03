@@ -6,7 +6,7 @@ namespace Architecture.GameEvents
     {
         [SerializeField] private string triggerTag = "Player";
         [SerializeField] private GameEvent triggerEvent;
-        [SerializeField] private bool triggerOnlyOnce = false;
+        [SerializeField] private bool triggerOnlyOnce = true;
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(triggerTag))
