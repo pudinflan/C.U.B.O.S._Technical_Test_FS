@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowColor: {r: 0.21960784, g: 0.14117648, b: 3.8588235, a: 1}
   pushForce: 10
-  raised: 0
+  raised: 1
 --- !u!135 &6725300664143298865
 SphereCollider:
   m_ObjectHideFlags: 0
