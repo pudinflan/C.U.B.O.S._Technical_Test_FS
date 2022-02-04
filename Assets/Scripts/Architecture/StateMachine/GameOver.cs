@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Architecture.StateMachine
 {
     public class GameOver: IState
@@ -7,9 +9,14 @@ namespace Architecture.StateMachine
         {
          
         }
+        public void OnStateEnter()
+        {
+            Time.timeScale = 0f;
+        }
 
-        public void OnStateEnter() { }
-
-        public void OnStateExit()  { }
+        public void OnStateExit()
+        {
+            Time.timeScale = 1f;
+        }
     }
 }

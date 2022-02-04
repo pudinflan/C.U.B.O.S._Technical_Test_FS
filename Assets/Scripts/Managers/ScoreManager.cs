@@ -18,6 +18,7 @@ namespace Managers
         [Header("Variables")] 
         [SerializeField] private FloatVariable levelTime;
 
+        private GamePersistence gamePersistence;
         private int powerUpsCollected = 0;
         private MedalType medalType = MedalType.None;
         
@@ -30,6 +31,9 @@ namespace Managers
             ResetTime();
             GameStateMachine.OnGameStateChanged += GameStateMachineOnGameStateChanged;
         }
+
+        private void Start() => gamePersistence = FindObjectOfType<GamePersistence>();
+
         private void OnDestroy() => GameStateMachine.OnGameStateChanged -= GameStateMachineOnGameStateChanged;
 
         private void Update()
@@ -40,29 +44,36 @@ namespace Managers
             if (levelTime.Value > bronzeScoreTime.Value)
             {
                 BronzeTimePassed?.Invoke();
-                medalType = MedalType.Bronze;
             }
 
             if (levelTime.Value > silverScoreTime.Value)
             {
                 SilverTimePassed?.Invoke();
-                medalType = MedalType.Silver;
             }
 
             if (levelTime.Value > goldScoreTime.Value)
             {
                 GoldTimePassed?.Invoke();
-                medalType = MedalType.Gold;
             }
         }
 
-        public void VictoryCondition() => GoalReached = true;
+        public void VictoryCondition()
+        {
+            GoalReached = true;
+        }
 
         private void GameStateMachineOnGameStateChanged(IState state)
         {
             if (state is GameOver)
             {
-                GamePersistence.Instance.SetTimeTrialScores(levelTime.Value,powerUpsCollected, medalType);
+                if (levelTime.Value < goldScoreTime.Value) 
+                    medalType = MedalType.Gold;
+                else if (levelTime.Value < silverScoreTime.Value)
+                    medalType = MedalType.Silver;
+                else if (levelTime.Value < bronzeScoreTime.Value)
+                    medalType = MedalType.Bronze;
+
+                gamePersistence.SetTimeTrialScores(levelTime.Value,powerUpsCollected, medalType);
             }
         }
 

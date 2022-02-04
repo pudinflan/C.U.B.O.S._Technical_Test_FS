@@ -5,33 +5,15 @@ namespace Architecture.Persistence
 {
     public class GamePersistence : MonoBehaviour
     {
-        public static GamePersistence Instance;
-        
-        private static bool _initialized;
-        
-        public GameData _gameData;
+        public GameData gameData;
 
         public static Action<GameData> OnGameDataLoaded;
 
-        private void Awake()
-        {
-            if (_initialized)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            _initialized = true;
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        private void Start() => LoadGame();
 
-        void Start() => LoadGame();
-
-        private void OnDisable() => SaveGame();
-        
         public void SaveGame()
         {
-            var json = JsonUtility.ToJson(_gameData);
+            var json = JsonUtility.ToJson(gameData);
             PlayerPrefs.SetString("GameData", json);
             Debug.Log(json);
             Debug.Log("Save data complete");
@@ -40,10 +22,14 @@ namespace Architecture.Persistence
         private void LoadGame()
         {
             var json = PlayerPrefs.GetString("GameData"); 
-            _gameData = JsonUtility.FromJson<GameData>(json) ?? new GameData();
+            gameData = JsonUtility.FromJson<GameData>(json);
+            
+            if (gameData == null) 
+                gameData = new GameData (float.MaxValue,0,0,MedalType.None);
 
             //do Something with data like binding if needed
-            OnGameDataLoaded?.Invoke(_gameData);
+            OnGameDataLoaded?.Invoke(gameData);
+            Debug.Log("Load data complete");
         }
         
         /// <summary>
@@ -54,16 +40,18 @@ namespace Architecture.Persistence
         /// <param name="medalType">The medal that was awarded</param>
         public void SetTimeTrialScores(float levelTimeValue, int powerUpsCollected, MedalType medalType)
         {
+            gameData.TimesPlayed++;
+            
             //increment PowerUps collected on Game Data
-            _gameData.TimeTrialData.PowerUpsCollected += powerUpsCollected;
+            gameData.PowerUpsCollected += powerUpsCollected;
 
             //Set Best time if new levelTimeValues is lower
-            if (_gameData.TimeTrialData.BestTime > levelTimeValue )
-                _gameData.TimeTrialData.BestTime = levelTimeValue;
+            if (gameData.BestTime > levelTimeValue )
+                gameData.BestTime = levelTimeValue;
 
             //Set Best Medal Reached if new medal is Higher
-            if (_gameData.TimeTrialData.BestMedalReached < medalType)
-                _gameData.TimeTrialData.BestMedalReached = medalType;
+            if (gameData.BestMedalReached < medalType)
+                gameData.BestMedalReached = medalType;
             
             SaveGame();
         }

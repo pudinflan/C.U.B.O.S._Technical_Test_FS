@@ -5,10 +5,17 @@ namespace Architecture.Persistence
     [Serializable]
     public class GameData
     {
-        public TimeTrialData TimeTrialData;
-        public GameData()
+        public float BestTime = float.MaxValue;
+        public int TimesPlayed ;
+        public int PowerUpsCollected ;
+        public MedalType BestMedalReached ;
+
+        public GameData(float bestTime, int timesPlayed, int powerUpsCollected, MedalType bestMedalReached)
         {
-            TimeTrialData = new TimeTrialData();
+            BestTime = bestTime;
+            TimesPlayed = timesPlayed;
+            PowerUpsCollected = powerUpsCollected;
+            BestMedalReached = bestMedalReached;
         }
     }
 }

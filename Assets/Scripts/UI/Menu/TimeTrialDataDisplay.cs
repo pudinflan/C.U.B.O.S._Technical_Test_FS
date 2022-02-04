@@ -19,12 +19,12 @@ namespace UI.Menu
 
         private void OnGameDataLoaded(GameData gameData)
         {
-            var timeData = gameData.TimeTrialData.BestTime;
-            var bestMedal = gameData.TimeTrialData.BestMedalReached;
-            var timesPlayedData = gameData.TimeTrialData.TimesPlayed;
-            var powerUpsCollectedData = gameData.TimeTrialData.PowerUpsCollected;
+            var bestMedal = gameData.BestMedalReached;
+            var timesPlayedData = gameData.TimesPlayed;
+            var powerUpsCollectedData = gameData.PowerUpsCollected;
+            var timeData = gameData.BestTime;
             
-            bestTimeValueText.SetText(StringFormatHelper.FormatTime(timeData));
+            bestTimeValueText.SetText(timesPlayedData > 0 ? StringFormatHelper.FormatTime(timeData) : "--:--:--");
             timesPlayedValueText.SetText(timesPlayedData.ToString());
             powerUpsCollectedValueText.SetText(powerUpsCollectedData.ToString());
             bestMedalValueText.SetText(bestMedal.ToString());
