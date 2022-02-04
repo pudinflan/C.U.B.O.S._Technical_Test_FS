@@ -1,10 +1,13 @@
-﻿using Architecture.Variables;
+﻿using System;
+using Architecture.Variables;
 using UnityEngine;
 
 namespace Interactables.PowerUps
 {
     public class SubtractTimePowerUp : Interactable
     {
+        public static event Action<float> OnLevelTimeReduced; 
+
         [SerializeField] FloatVariable levelTime;
         [SerializeField] private float timeToSubtract = 5f;
 
@@ -26,6 +29,8 @@ namespace Interactables.PowerUps
                 levelTime.Value -= timeToSubtract;
             else
                 levelTime.Value = 0;
+            
+            OnLevelTimeReduced?.Invoke(timeToSubtract);
             
             //TODO: Remove This When PowerUp gets more abstraction
             Destroy(gameObject);
