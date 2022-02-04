@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Interactables.PowerUps
 {
-    public class SubtractTimePowerUp : Interactable
+    public class SubtractTimePowerUp : PowerUp
     {
         public static event Action<float> OnLevelTimeReduced; 
 
@@ -32,8 +32,7 @@ namespace Interactables.PowerUps
             
             OnLevelTimeReduced?.Invoke(timeToSubtract);
             
-            //TODO: Remove This When PowerUp gets more abstraction
-            Destroy(gameObject);
+            Used();
         }
     }
 }

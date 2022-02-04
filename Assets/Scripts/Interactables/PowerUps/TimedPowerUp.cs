@@ -1,17 +1,14 @@
-using System;
 using System.Threading.Tasks;
 using Architecture.Variables;
 using UnityEngine;
 
 namespace Interactables.PowerUps
 {
-    public class TimedPowerUp : Interactable
+    public class TimedPowerUp : PowerUp
     {
-        public static event Action<float> OnPowerUpUsed;
-        
         [Header("Values")] 
         [SerializeField] private float boostedValue;
-        [SerializeField] private float boostDuration;
+    
 
         [Header("Variables")] 
         [SerializeField] private FloatVariable variableToModify;
@@ -49,20 +46,10 @@ namespace Interactables.PowerUps
 
             Finished();
         }
-
-        /// <summary>
-        /// Override for More Complex Behaviours on PowerUp used like FX, Sound, etc.
-        /// </summary>
-        protected virtual void Used()
-        {
-            OnPowerUpUsed?.Invoke(boostDuration);
-            
-            //TODO: Debug do FX here Like sound and Particles
-            Destroy(gameObject);
-        }
-
+        
         protected virtual void Finished()
         {
+        
             //reset speed to default
             variableToModify.Value = variableDefaultValue;
         }

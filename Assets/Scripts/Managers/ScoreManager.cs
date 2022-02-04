@@ -2,6 +2,7 @@
 using Architecture.Persistence;
 using Architecture.StateMachine;
 using Architecture.Variables;
+using Interactables.PowerUps;
 using UnityEngine;
 
 namespace Managers
@@ -30,11 +31,16 @@ namespace Managers
         {
             ResetTime();
             GameStateMachine.OnGameStateChanged += GameStateMachineOnGameStateChanged;
+            PowerUp.OnPowerUpUsed += PowerUpOnPowerUpUsed;
         }
 
         private void Start() => gamePersistence = FindObjectOfType<GamePersistence>();
 
-        private void OnDestroy() => GameStateMachine.OnGameStateChanged -= GameStateMachineOnGameStateChanged;
+        private void OnDestroy()
+        {
+            GameStateMachine.OnGameStateChanged -= GameStateMachineOnGameStateChanged;
+            PowerUp.OnPowerUpUsed -= PowerUpOnPowerUpUsed;
+        }
 
         private void Update()
         {
@@ -61,7 +67,7 @@ namespace Managers
         {
             GoalReached = true;
         }
-
+        
         private void GameStateMachineOnGameStateChanged(IState state)
         {
             if (state is GameOver)
@@ -76,6 +82,8 @@ namespace Managers
                 gamePersistence.SetTimeTrialScores(levelTime.Value,powerUpsCollected, medalType);
             }
         }
+        
+        private void PowerUpOnPowerUpUsed(float duration) => powerUpsCollected++;
 
         private void ResetTime()
         {

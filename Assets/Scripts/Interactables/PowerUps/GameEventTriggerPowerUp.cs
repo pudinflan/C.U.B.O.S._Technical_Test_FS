@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Interactables.PowerUps
 {
-    public class GameEventTriggerPowerUp : Interactable
+    public class GameEventTriggerPowerUp : PowerUp
     {
         [SerializeField] private GameEvent gameEvent;
 
@@ -23,10 +23,10 @@ namespace Interactables.PowerUps
             Used();
         }
 
-        private void Used()
+        protected override void Used()
         {
             gameEvent?.Invoke();
-            Destroy(gameObject);
+            base.Used();
         }
     }
 }

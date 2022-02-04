@@ -1,5 +1,3 @@
-using System;
-using Architecture.Persistence;
 using UnityEngine;
 
 namespace Architecture.StateMachine
