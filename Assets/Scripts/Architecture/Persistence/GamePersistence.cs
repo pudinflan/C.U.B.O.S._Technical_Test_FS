@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Architecture.Persistence
 {
@@ -17,6 +18,13 @@ namespace Architecture.Persistence
             PlayerPrefs.SetString("GameData", json);
             Debug.Log(json);
             Debug.Log("Save data complete");
+        }
+
+        public void DeleteDataAndReload()
+        {
+            gameData = new GameData (float.MaxValue,0,0,MedalType.None);
+            SaveGame();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         private void LoadGame()
