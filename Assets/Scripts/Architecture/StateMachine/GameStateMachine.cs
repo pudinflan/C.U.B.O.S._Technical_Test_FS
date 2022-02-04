@@ -49,6 +49,9 @@ namespace Architecture.StateMachine
             
             //Transitions to loading to restart the level when RestartButton is Pressed
             stateMachine.AddTransition(pause, loading, () => RestartButton.Pressed);
+            
+            //Transitions to Menu state when menu button is pressed
+            stateMachine.AddTransition(pause, menu, () => MenuButton.Pressed);
         }
 
         private void Update() => stateMachine.OnStateUpdate();
