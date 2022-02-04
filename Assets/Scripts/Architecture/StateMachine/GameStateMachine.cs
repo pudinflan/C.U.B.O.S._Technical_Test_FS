@@ -55,7 +55,7 @@ namespace Architecture.StateMachine
             stateMachine.AddTransition(pause, menu, () => MenuButton.Pressed);
             
             //transitions to GameOver when GameOver is called from 
-            stateMachine.AddTransition(play,gameOver, ScoreManager.OnGoalReached);
+            stateMachine.AddTransition(play,gameOver, () => ScoreManager.GoalReached);
         }
 
         private void Update() => stateMachine.OnStateUpdate();

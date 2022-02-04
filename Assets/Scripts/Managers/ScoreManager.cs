@@ -8,7 +8,7 @@ namespace Managers
 {
     public class ScoreManager : MonoBehaviour
     {
-        private static  bool _goalReached = false;
+        public static  bool GoalReached { get; private set; }
         
         [Header("Setup")] 
         [SerializeField] private FloatVariable goldScoreTime;
@@ -56,7 +56,7 @@ namespace Managers
             }
         }
 
-        public static bool OnGoalReached() => _goalReached;
+        public void VictoryCondition() => GoalReached = true;
 
         private void GameStateMachineOnGameStateChanged(IState state)
         {
@@ -69,7 +69,7 @@ namespace Managers
         private void ResetTime()
         {
             levelTime.Value = 0;
-            _goalReached = false;
+            GoalReached = false;
         }
     }
 }
