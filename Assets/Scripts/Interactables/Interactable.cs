@@ -19,8 +19,7 @@ namespace Interactables
         {
             if (!CanBeInteracted())
                 return;
-
-            Debug.Log($"Interacting LEFT with: {gameObject.name}");
+            
         }
 
         public virtual void InteractRight()
@@ -29,7 +28,6 @@ namespace Interactables
                 return;
             
             
-            Debug.Log($"Interacting RIGHT with: {gameObject.name}");
         }
     }
 }

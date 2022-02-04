@@ -47,7 +47,6 @@ namespace Player
                 {
                     lastInteractable = CurrentInteractable;
                     OnInteractableFound?.Invoke((Interactable)CurrentInteractable);
-                    Debug.Log($"Interactable in range: {CurrentInteractable}");
                 }
                 else
                 {

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Architecture.Variables;
 using UnityEngine;
@@ -6,6 +7,8 @@ namespace Interactables.PowerUps
 {
     public class TimedPowerUp : Interactable
     {
+        public static event Action<float> OnPowerUpUsed;
+        
         [Header("Values")] 
         [SerializeField] private float boostedValue;
         [SerializeField] private float boostDuration;
@@ -52,7 +55,9 @@ namespace Interactables.PowerUps
         /// </summary>
         protected virtual void Used()
         {
-            //Debug
+            OnPowerUpUsed?.Invoke(boostDuration);
+            
+            //TODO: Debug do FX here Like sound and Particles
             Destroy(gameObject);
         }
 

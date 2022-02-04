@@ -19,20 +19,14 @@ namespace Player.HandMechanism
 
         private void PlayerInteractionOnInteractableFound(IInteractable interactable)
         {
-        
             if (interactable == null)
             {
-                Debug.Log("CHanging color to white");
-                handsColorControl.SetGlowColor(Color.white);
+                handsColorControl.SetGlowColor(Color.black);
                 return;
             }
-        
-        
+            
             if (interactable is Interactable interactableObject)
-            {
-                Debug.Log("CHanging color to red");
                 handsColorControl.SetGlowColor(interactableObject.glowColor);
-            }
         }
 
     }

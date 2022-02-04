@@ -43,7 +43,6 @@ namespace Animation
         private void PlayerInteractionOnInteractableFound(IInteractable interactable)
         {
             handsIKControl.RaiseHands((Interactable) interactable);
-            Debug.Log($"Interactable Found: {interactable}");
         }
     }
 }
