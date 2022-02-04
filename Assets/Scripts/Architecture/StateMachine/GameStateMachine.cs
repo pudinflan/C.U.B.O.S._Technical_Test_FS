@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UI.Buttons;
 using UnityEngine;
 
 namespace Architecture.StateMachine
@@ -37,6 +38,9 @@ namespace Architecture.StateMachine
             //transitions between play and pause back and forth
             stateMachine.AddTransition(play, pause, () => Input.GetKeyDown(KeyCode.Escape));
             stateMachine.AddTransition(pause, play, () => Input.GetKeyDown(KeyCode.Escape));
+            
+            //Transitions to loading to restart the level when RestartButton is Pressed
+            stateMachine.AddTransition(pause, loading, () => RestartButton.Pressed);
         }
 
         private void Update() => stateMachine.OnStateUpdate();
