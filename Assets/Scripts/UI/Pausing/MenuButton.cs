@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-namespace UI.Buttons
+namespace UI.Pausing
 {
     public class MenuButton : Button
     {

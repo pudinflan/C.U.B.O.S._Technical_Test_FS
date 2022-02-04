@@ -4,30 +4,33 @@ using TMPro;
 using UnityEngine;
 using Utils;
 
-public class DisplayPowerUpTime : MonoBehaviour
+namespace UI.Scoring
 {
-    [SerializeField] private TMP_Text powerUpTimerText;
-
-    private void Awake() => TimedPowerUp.OnPowerUpUsed += StartCount;
-    private void OnDisable() => TimedPowerUp.OnPowerUpUsed -= StartCount;
-    private  void StartCount(float duration) => StartCoroutine(CountTime(duration)) ;
-
-    /// <summary>
-    /// Counts Time and displays on Ui
-    /// </summary>
-    /// <param name="duration"></param>
-    private IEnumerator  CountTime(float duration)
+    public class DisplayPowerUpTime : MonoBehaviour
     {
-        const float step = .1f;
-        var end = Time.time + duration;
-        
-        while (Time.time < end)
+        [SerializeField] private TMP_Text powerUpTimerText;
+
+        private void Awake() => TimedPowerUp.OnPowerUpUsed += StartCount;
+        private void OnDisable() => TimedPowerUp.OnPowerUpUsed -= StartCount;
+        private  void StartCount(float duration) => StartCoroutine(CountTime(duration)) ;
+
+        /// <summary>
+        /// Counts Time and displays on Ui
+        /// </summary>
+        /// <param name="duration"></param>
+        private IEnumerator  CountTime(float duration)
         {
-            powerUpTimerText.SetText(StringFormatHelper.FormatTime(duration));
-            duration -= step;
+            const float step = .1f;
+            var end = Time.time + duration;
+        
+            while (Time.time < end)
+            {
+                powerUpTimerText.SetText(StringFormatHelper.FormatTime(duration));
+                duration -= step;
             
-            yield return new WaitForSeconds(step);
+                yield return new WaitForSeconds(step);
+            }
+            powerUpTimerText.SetText("");
         }
-        powerUpTimerText.SetText("");
     }
 }

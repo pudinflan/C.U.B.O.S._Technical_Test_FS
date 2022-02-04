@@ -1,6 +1,7 @@
 ﻿using System;
-using UI.Buttons;
+using Managers;
 using UI.Menu;
+using UI.Pausing;
 using UnityEngine;
 
 namespace Architecture.StateMachine
@@ -32,6 +33,7 @@ namespace Architecture.StateMachine
             var loading = new LoadLevel();
             var play = new Play();
             var pause = new Pause();
+            var gameOver = new GameOver();
 
             //loads our level
             stateMachine.SetState(menu);
@@ -51,6 +53,9 @@ namespace Architecture.StateMachine
             
             //Transitions to Menu state when menu button is pressed
             stateMachine.AddTransition(pause, menu, () => MenuButton.Pressed);
+            
+            //transitions to GameOver when GameOver is called from 
+            stateMachine.AddTransition(play,gameOver, ScoreManager.OnGoalReached);
         }
 
         private void Update() => stateMachine.OnStateUpdate();
