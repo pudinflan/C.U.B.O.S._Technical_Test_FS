@@ -9,6 +9,8 @@ namespace Architecture.Persistence
         
         public GameData _gameData;
 
+        public static Action<GameData> OnGameDataLoaded;
+
         private void Awake()
         {
             if (_initialized)
@@ -35,14 +37,10 @@ namespace Architecture.Persistence
         private void LoadGame()
         {
             var json = PlayerPrefs.GetString("GameData"); 
-            _gameData = JsonUtility.FromJson<GameData>(json);
+            _gameData = JsonUtility.FromJson<GameData>(json) ?? new GameData();
 
-            if (_gameData == null)
-            {
-                _gameData = new GameData();
-            }
-            
-            //do Something with data
+            //do Something with data like binding if needed
+            OnGameDataLoaded?.Invoke(_gameData);
         }
     }
 }
