@@ -1,3 +1,4 @@
+using UI.Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,17 +8,11 @@ namespace Architecture.StateMachine
     {
         private AsyncOperation operation = new AsyncOperation();
 
-        private readonly string sceneToLoad;
-
         public bool Finished() => operation.isDone;
 
-        public LoadLevel(string sceneName) => sceneToLoad = sceneName;
+        public void OnStateUpdate() { }
 
-        public void OnStateUpdate()
-        {
-        }
-
-        public void OnStateEnter() => operation = SceneManager.LoadSceneAsync(sceneToLoad);
+        public void OnStateEnter() => operation = SceneManager.LoadSceneAsync(PlayButton.LevelToLoad);
 
         public void OnStateExit() => operation = null;
     }

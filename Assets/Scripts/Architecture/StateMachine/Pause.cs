@@ -6,9 +6,7 @@ namespace Architecture.StateMachine
     {
         public static bool Active { get; private set; }
         
-        public void OnStateUpdate()
-        {
-        }
+        public void OnStateUpdate() { }
 
         public void OnStateEnter()
         {

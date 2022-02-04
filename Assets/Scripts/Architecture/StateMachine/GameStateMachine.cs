@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UI.Buttons;
+using UI.Menu;
 using UnityEngine;
 
 namespace Architecture.StateMachine
@@ -10,6 +11,8 @@ namespace Architecture.StateMachine
         private static bool _initialized;
         
         private StateMachine stateMachine;
+
+        public static event Action<IState> OnGameStateChanged; 
 
         void Awake()
         {
@@ -22,16 +25,21 @@ namespace Architecture.StateMachine
             DontDestroyOnLoad(gameObject);
 
             stateMachine = new StateMachine();
+            
+            //when the stateMachine changed state notify that GameStateMachine also changed state
+            stateMachine.OnStateChanged += state => OnGameStateChanged?.Invoke(state);
 
             var menu = new Menu();
-            var loading = new LoadLevel("DemoLevel");
+            var loading = new LoadLevel();
             var play = new Play();
             var pause = new Pause();
 
             //loads our level
-            stateMachine.SetState(loading);
+            stateMachine.SetState(menu);
 
             //transitions
+            stateMachine.AddTransition(menu,loading, () => PlayButton.LevelToLoad != null);
+            
             //transitions from loading to play if loading operation is finished
             stateMachine.AddTransition(loading, play, loading.Finished);
 
