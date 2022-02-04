@@ -30,19 +30,19 @@ public class DisplayScoreCubes : MonoBehaviour
 
        SetupTimesOnUI();
     }
-
-    private void SetupTimesOnUI()
-    {
-        bronzeText.SetText(StringFormatHelper.FormatTime(bronzeScoreTime.Value,false));
-        silverText.SetText(StringFormatHelper.FormatTime(silverScoreTime.Value, false));
-        goldText.SetText(StringFormatHelper.FormatTime(goldScoreTime.Value, false));
-    }
-
+    
     private void OnDisable()
     {
         ScoreManager.BronzeTimePassed -= ScoreManagerOnBronzeTimePassed;
         ScoreManager.SilverTimePassed -= ScoreManagerOnSilverTimePassed;
         ScoreManager.GoldTimePassed -= ScoreManagerOnGoldTimePassed;
+    }
+    
+    private void SetupTimesOnUI()
+    {
+        bronzeText.SetText(StringFormatHelper.FormatTime(bronzeScoreTime.Value,false));
+        silverText.SetText(StringFormatHelper.FormatTime(silverScoreTime.Value, false));
+        goldText.SetText(StringFormatHelper.FormatTime(goldScoreTime.Value, false));
     }
 
     private void ScoreManagerOnBronzeTimePassed()
