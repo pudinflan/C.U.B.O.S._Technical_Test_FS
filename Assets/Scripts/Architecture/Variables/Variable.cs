@@ -7,7 +7,12 @@ namespace Architecture.Variables
   {
     [SerializeField] private T defaultValue;
     [NonSerialized] public T Value;
-    
+
+    private void Awake()
+    {
+      Value = defaultValue;
+    }
+
     private void OnValidate() => Value = defaultValue;
   }
 }
