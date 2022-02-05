@@ -56,6 +56,13 @@ namespace Architecture.StateMachine
             
             //transitions to GameOver when GameOver is called from 
             stateMachine.AddTransition(play,gameOver, () => ScoreManager.GoalReached);
+            
+            //Transitions to loading to restart the level when RestartButton is Pressed
+            stateMachine.AddTransition(pause, loading, () => RestartButton.Pressed);
+            
+            //Transitions from gameOver to pause when goal is reached
+            stateMachine.AddTransition(gameOver, pause, () => ScoreManager.GoalReached);
+            
         }
 
         private void Update() => stateMachine.OnStateUpdate();
