@@ -28,8 +28,7 @@ namespace Animation
         private float currentIKPositionWeight = 0;
         private float currentIKRotationWeight = 0;
         private float currentHandAnimationStayTimer = 0;
-
-
+        
         private void Awake()
         {
             animator = GetComponent<Animator>();

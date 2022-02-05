@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using UnityEngine;
 
 namespace Interactables.PowerUps
@@ -14,9 +15,8 @@ namespace Interactables.PowerUps
         /// </summary>
         protected virtual void Used()
         {
+            AudioManager.Instance.PlayAudioFX(audioSource.clip);
             OnPowerUpUsed?.Invoke(boostDuration);
-            
-            //TODO: Debug do FX here Like sound and Particles
             Destroy(gameObject);
         }
     }

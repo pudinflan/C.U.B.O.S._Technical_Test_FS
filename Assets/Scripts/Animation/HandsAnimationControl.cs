@@ -1,4 +1,5 @@
-﻿using Interactables;
+﻿using Audio;
+using Interactables;
 using Player;
 using UnityEngine;
 
@@ -10,10 +11,13 @@ namespace Animation
         private Animator animator;
         private HandsInteractionIKControl handsIKControl;
 
+        private AudioSource audioSource;
+
         private void Awake()
         {
             animator = GetComponent<Animator>();
             handsIKControl = GetComponent<HandsInteractionIKControl>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void OnEnable()
@@ -33,11 +37,17 @@ namespace Animation
         private void PlayerInteractionOnInteractLeft(IInteractable interactable)
         {
             animator.SetTrigger("InteractLeft");
+
+       
+                AudioManager.Instance.PlayAudioFX(audioSource.clip);
         }
 
         private void PlayerInteractionOnInteractRight(IInteractable interactable)
         {
             animator.SetTrigger("InteractRight");
+            
+           
+                AudioManager.Instance.PlayAudioFX(audioSource.clip);
         }
 
         private void PlayerInteractionOnInteractableFound(IInteractable interactable)

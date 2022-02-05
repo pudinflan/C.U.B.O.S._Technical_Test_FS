@@ -1,14 +1,19 @@
-﻿using Architecture.StateMachine;
+﻿using System;
+using Architecture.StateMachine;
+using Audio;
 using DG.Tweening;
 using Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Pausing
 {
     public class PausePanel : MonoBehaviour
     {
         [SerializeField] private TMP_Text titleText;
+        [SerializeField] private Toggle musicToggle;
+        [SerializeField] private Toggle fxToggle;
         
         private CanvasGroup canvasGroup;
     
@@ -19,6 +24,12 @@ namespace UI.Pausing
             canvasGroup.alpha = 0;
         }
 
+        private void Start()
+        {
+            musicToggle.SetIsOnWithoutNotify(!AudioManager.Instance.musicMuted);
+            fxToggle.SetIsOnWithoutNotify(!AudioManager.Instance.fxMuted);
+        }
+
         private void OnDestroy() => GameStateMachine.OnGameStateChanged -= HandleGameStateChanged;
 
         private void HandleGameStateChanged(IState state)
@@ -27,6 +38,15 @@ namespace UI.Pausing
             tween?.SetUpdate(true);
             
             titleText.SetText(ScoreManager.GoalReached ? "Goal Reached" : "Paused");
+        }
+
+        public void ToggleFX(bool toggle)
+        {
+            AudioManager.Instance.ToggleFx(fxToggle.isOn);
+        }
+        public void ToggleMusic(bool toggle)
+        {
+            AudioManager.Instance.ToggleMusic(musicToggle.isOn);
         }
     }
 }

@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 
 namespace Architecture.StateMachine
@@ -10,6 +11,7 @@ namespace Architecture.StateMachine
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            AudioManager.Instance.PlayMusic();
         }
 
         public void OnStateExit()

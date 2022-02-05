@@ -38,6 +38,7 @@ namespace Interactables.Cubes
                 return;
             raised = true;
             
+            audioSource.Play();
             HandleCubePosition();
         }
 
@@ -47,6 +48,7 @@ namespace Interactables.Cubes
                 return;
             raised = false;
             
+            audioSource.Play();
             HandleCubePosition();
         }
         
