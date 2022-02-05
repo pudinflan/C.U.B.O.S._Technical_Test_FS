@@ -3889,6 +3889,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1815134950518822549, guid: 026cc139879a50e449e26d8724bd0813,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222892786864290251, guid: 026cc139879a50e449e26d8724bd0813,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163353748870383823, guid: 026cc139879a50e449e26d8724bd0813,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803428609615520007, guid: 026cc139879a50e449e26d8724bd0813,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 026cc139879a50e449e26d8724bd0813, type: 3}
 --- !u!4 &1477453405 stripped
