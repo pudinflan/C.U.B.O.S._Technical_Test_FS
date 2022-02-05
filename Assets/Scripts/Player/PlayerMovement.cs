@@ -1,4 +1,5 @@
-﻿using Architecture.Variables;
+﻿using System;
+using Architecture.Variables;
 using UnityEngine;
 
 namespace Player
@@ -19,6 +20,8 @@ namespace Player
 
         private float mouseX;
         private float mouseY;
+        private bool onSlope;
+        private float slopeVelocityModifier;
 
         private void Awake()
         {
@@ -30,6 +33,8 @@ namespace Player
         {
             mouseX += Input.GetAxis("Mouse X");
             mouseY += Input.GetAxis("Mouse Y") ;
+
+            slopeVelocityModifier = onSlope ? 2f : 1f;
         }
 
         private void FixedUpdate()
@@ -44,7 +49,7 @@ namespace Player
             float vert = Input.GetAxis("Vertical");
             
             var velocity = new Vector3(hor, 0, vert);
-            velocity *= moveSpeed.Value * Time.fixedDeltaTime;
+            velocity *= moveSpeed.Value * Time.fixedDeltaTime * slopeVelocityModifier;
             Vector3 movementOffset = transform.rotation * velocity;
             rb.MovePosition(transform.position + movementOffset);
             
@@ -61,6 +66,16 @@ namespace Player
             //rotate player on the Y Axis
             transform.Rotate(0, mouseX * turnSpeedX * Time.fixedDeltaTime, 0);
             mouseX = 0;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if ( other.CompareTag("Slope")) onSlope = true;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if ( other.CompareTag("Slope")) onSlope = false;
         }
     }
 }
